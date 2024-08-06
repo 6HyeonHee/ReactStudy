@@ -57,6 +57,10 @@ function App() {
     setEditingComment(null); // 수정 완료 후 폼 숨기기
   };
 
+  const EditBackProcess = () => {
+    setEditingComment(null); // 수정 취소 후 폼 숨기기
+  };
+
   return (
     <div className="App">
       <Board />
@@ -65,10 +69,14 @@ function App() {
         onDelete={DeleteActionProcess}
         onEdit={(comment) => setEditingComment(comment)}
       />
-      <ComWrite writeAction={WriteActionProcess} />
       {editingComment && (
-        <ComEdit commentData={editingComment} onUpdate={EditActionProcess} />
+        <ComEdit
+          commentData={editingComment}
+          onUpdate={EditActionProcess}
+          editBack={EditBackProcess}
+        />
       )}
+      <ComWrite writeAction={WriteActionProcess} />
     </div>
   );
 }

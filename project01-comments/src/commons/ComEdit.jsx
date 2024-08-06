@@ -13,6 +13,10 @@ function ComEdit({ commentData, onUpdate, editBack }) {
     });
   };
 
+  const handleCancel = () => {
+    editBack();
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -27,7 +31,7 @@ function ComEdit({ commentData, onUpdate, editBack }) {
                   value={writer}
                   onChange={(e) => setWriter(e.target.value)}
                 />
-                <button type="button" onClick={() => {}}>
+                <button type="button" onClick={handleCancel}>
                   수정 취소
                 </button>
               </td>
