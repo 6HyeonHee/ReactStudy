@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 
-function ComList({ myData }) {
+function ComList({ myData, onEdit, onDelete }) {
   return (
     <table id="boardTable">
       <tbody>
@@ -12,10 +12,10 @@ function ComList({ myData }) {
               <td>Writer: {com.writer}</td>
               <td>
                 Date: {com.date}
-                <button type="button" onClick={() => alert('수정')}>
+                <button type="button" onClick={() => onEdit(com)}>
                   수정
                 </button>
-                <button type="button" onClick={() => alert('삭제')}>
+                <button type="button" onClick={() => onDelete(com.no)}>
                   삭제
                 </button>
               </td>

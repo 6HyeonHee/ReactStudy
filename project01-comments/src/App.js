@@ -28,6 +28,8 @@ function App() {
     },
   ]);
 
+  const [editingComment, setEditingComment] = useState(null);
+
   // 댓글 작성
   const WriteActionProcess = (writer, comment) => {
     const newComment = {
@@ -40,12 +42,33 @@ function App() {
     setMyData([...myData, newComment]);
   };
 
+  // 댓글 삭제
+  const DeleteActionProcess = (commentNo) => {
+    setMyData(myData.filter((comment) => comment.no !== commentNo));
+  };
+
+  // 댓글 수정
+  const EditActionProcess = (updatedComment) => {
+    setMyData(
+      myData.map((comment) =>
+        comment.no === updatedComment.no ? updatedComment : comment
+      )
+    );
+    setEditingComment(null); // 수정 완료 후 폼 숨기기
+  };
+
   return (
     <div className="App">
       <Board />
-      <ComList myData={myData} />
+      <ComList
+        myData={myData}
+        onDelete={DeleteActionProcess}
+        onEdit={(comment) => setEditingComment(comment)}
+      />
       <ComWrite writeAction={WriteActionProcess} />
-      <ComEdit />
+      {editingComment && (
+        <ComEdit commentData={editingComment} onUpdate={EditActionProcess} />
+      )}
     </div>
   );
 }
