@@ -49,6 +49,9 @@ function App() {
 
   // 댓글 수정
   const EditActionProcess = (updatedComment) => {
+    if (setEditingComment !== null) {
+      alert('수정모드입니다. 수정취소를 먼저 눌러주세요');
+    }
     setMyData(
       myData.map((comment) =>
         comment.no === updatedComment.no ? updatedComment : comment
