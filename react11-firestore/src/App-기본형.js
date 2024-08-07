@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h2>파이어베이스</h2>
+      <h2>Firebase - Firestore 연동 App</h2>
     </div>
   );
 }
