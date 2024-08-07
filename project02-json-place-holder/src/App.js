@@ -5,17 +5,24 @@ function Myphoto(props) {
   let [myPhoto, setMyPhoto] = useState([]);
   let [myPage, setMyPage] = useState(1);
 
-  useEffect(function () {
-    fetch('https://jsonplaceholder.typicode.com/albums/100/photos')
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        setMyPhoto(json);
-      });
-    return () => {
-      console.log('#Life', 'LifeGood=>4.useEffect실행2');
-    };
-  }, []);
+  useEffect(
+    function () {
+      fetch('https://jsonplaceholder.typicode.com/albums/' + myPage + '/photos')
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          setMyPhoto(json);
+        });
+      return () => {
+        console.log('#Life', 'LifeGood=>4.useEffect실행2');
+      };
+    },
+    [myPage]
+  );
+
+  const PageChange = (event) => {
+    setMyPage(event.target.value);
+  };
 
   // 빈 배열 생성
   let trTag = [];
@@ -46,6 +53,16 @@ function Myphoto(props) {
   console.log('#Life', 'LifeGood=>2.return실행(rednder와 동일)');
   return (
     <div id="contactList">
+      <div>
+        <label htmlFor="pageSelect">Select Page: </label>
+        <select id="pageSelect" value={myPage} onChange={PageChange}>
+          {[...Array(100).keys()].map((i) => (
+            <option key={i + 1} value={i + 1}>
+              {i + 1}
+            </option>
+          ))}
+        </select>
+      </div>
       <table border="1">
         <thead>
           <tr>
