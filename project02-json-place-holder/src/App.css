@@ -1,0 +1,16 @@
+.grid {
+  display: flex;
+}
+.grid .col1 {
+  width: 50%;
+  height: 500px;
+}
+.grid .col1 table {
+  width: 100%;
+}
+.grid .col1 thead .row1 {
+  width: 30%;
+}
+.grid .col1 tbody .photo {
+  height: 120px;
+}
