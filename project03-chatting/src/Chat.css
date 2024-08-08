@@ -1,26 +1,40 @@
 #chatWindow {
-  border: 1px solid black;
-  width: 280px;
-  height: 310px;
-  overflow: scroll;
+  border: none;
+  width: 550px;
+  height: 590px;
+  overflow-y: scroll;
   padding: 5px;
   margin-bottom: 10px;
 }
 input[name='message'] {
-  width: 236px;
-  height: 30px;
+  width: 540px;
+  height: 40px;
+  border: none;
+  background-color: #8dd3eb;
+  border-radius: 0 0 10px 10px;
+  margin-right: 10px;
+  padding-left: 20px;
 }
-#sendBtn {
-  height: 30px;
+.sendBtn {
+  display: block;
+  width: 50px;
+  height: 50px;
   position: relative;
-  top: 2px;
-  left: -2px;
+  bottom: 45px;
+  left: 500px;
+  border: none;
+  background: url(../public/send.svg) no-repeat center;
 }
 #closeBtn {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: none;
   margin-bottom: 3px;
   position: relative;
-  top: 2px;
-  left: -2px;
+  bottom: 50px;
+  left: 520px;
+  background: url(../public/close.svg) no-repeat center center;
 }
 #chatId {
   width: 143px;
@@ -28,6 +42,32 @@ input[name='message'] {
   border: 1px solid #aaaaaa;
   background-color: #eeeeee;
 }
+.header {
+  background-color: #8dd3eb;
+  width: 562px;
+  height: 80px;
+  border-radius: 10px 10px 0 0;
+  padding-top: 1px;
+}
+.Msg {
+  margin-bottom: 20px;
+}
 .myMsg {
   text-align: right;
+}
+.chatting {
+  display: inline;
+  height: 30px;
+  width: auto;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.chatother {
+  background-color: #8dd3eb;
+}
+
+.chatme {
+  background-color: #e6f8ff;
 }
