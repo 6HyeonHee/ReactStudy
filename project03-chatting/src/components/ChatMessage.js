@@ -13,7 +13,6 @@ const formatDate = (timestamp) => {
     day: '2-digit',
     hour: '2-digit',
     minute: '2-digit',
-    second: '2-digit',
   };
   return date.toLocaleDateString(undefined, options);
 };
@@ -31,6 +30,7 @@ function ChatMessage() {
   const userId = searchParams.get('userId');
   // 채팅내역이 보여지는 부분의 DOM 참조
   const chatWindow = useRef();
+  const timerRef = useRef(0);
 
   // 채팅 데이터 저장용 State
   const [chatData, setChatData] = useState('');
@@ -53,6 +53,10 @@ function ChatMessage() {
   const dbRef = ref(realtime, roomId);
   useEffect(() => {
     onValue(dbRef, (snapshot) => {
+      clearInterval(timerRef.current);
+      timerRef.current = setTimeout(() => {
+        scrollTop(chatWindow.current);
+      }, 300);
       let showDiv = [];
       snapshot.forEach((childSnapshot) => {
         // const childKey = childSnapshot.key;
@@ -97,7 +101,7 @@ function ChatMessage() {
       // State를 변경해서 대화내역을 새롭게 렌더링 한다.
       setChatData(showDiv);
     });
-  }, [chatData]);
+  }, []);
 
   return (
     <>
